@@ -10,3 +10,6 @@ opentelemetry-exporter-otlp==1.26.0
 opentelemetry-instrumentation-fastapi==0.47b0
 opentelemetry-instrumentation-logging==0.47b0
 opentelemetry-instrumentation-redis==0.47b0
+httpx>=0.25.0
+pyyaml>=6.0
+

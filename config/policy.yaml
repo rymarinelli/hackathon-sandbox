@@ -1,0 +1,39 @@
+version: 1
+rules:
+  - description: "Avoid personally identifiable information"
+    keywords:
+      - social security
+      - passport number
+  - description: "Avoid unsafe instructions"
+    keywords:
+      - weapon
+      - malware
+api:
+  allowed_api_keys:
+    - demo-key
+  redis_url: redis://localhost:6379/0
+  rate_limit:
+    requests: 60
+    window_seconds: 60
+safety:
+  blocked_terms:
+    - unauthorized access
+    - exploit
+    - malware
+  sanitize_replacements:
+    - pattern: password
+      replacement: "[credential]"
+    - pattern: secret
+      replacement: "[secret]"
+  paraphrase_enabled: true
+  paraphrase_hint: "Please keep language neutral and instructional."
+  redact_pii: true
+  redaction_patterns:
+    email: "[REDACTED_EMAIL]"
+    phone: "[REDACTED_PHONE]"
+  max_output_length: 500
+  allow_html: false
+  allow_blocked_terms_in_output: false
+logging:
+  audit_channel: safety_audit
+  level: INFO
