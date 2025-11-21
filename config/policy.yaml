@@ -1,3 +1,13 @@
+version: 1
+rules:
+  - description: "Avoid personally identifiable information"
+    keywords:
+      - social security
+      - passport number
+  - description: "Avoid unsafe instructions"
+    keywords:
+      - weapon
+      - malware
 api:
   allowed_api_keys:
     - demo-key

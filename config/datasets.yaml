@@ -1,0 +1,7 @@
+datasets:
+  - name: safety-eval
+    description: "Synthetic prompts for safety evaluation"
+    source: https://example.com/safety-eval
+  - name: demo-conversations
+    description: "Example conversations for latency testing"
+    source: local

@@ -1,0 +1,16 @@
+providers:
+  openai:
+    default_model: gpt-3.5-turbo-instruct
+    options:
+      - gpt-3.5-turbo-instruct
+      - gpt-4o-mini
+  huggingface:
+    default_model: gpt2
+    options:
+      - gpt2
+      - distilgpt2
+  sandbox:
+    default_model: sandbox-small
+    options:
+      - sandbox-small
+      - sandbox-large
