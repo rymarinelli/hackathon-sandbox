@@ -1,0 +1,42 @@
+replicaCount: 2
+
+image:
+  repository: your-docker-registry/gateway
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+podAnnotations: {}
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+env:
+  APP_NAME: gateway
+  APP_HOST: 0.0.0.0
+  APP_PORT: "8000"
+  LOG_LEVEL: INFO
+  REDIS_URL: redis://redis-master:6379/0
+  READY_REDIS_CHECK: "true"
+  OTEL_SERVICE_NAME: gateway
+  # OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+  # OTEL_EXPORTER_OTLP_INSECURE: "true"
+
+redis:
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+
+# If deploying Redis separately, disable the bundled chart and point REDIS_URL at that release.
+# redis:
+#   enabled: false
+# REDIS_URL: redis://external-redis:6379/0
